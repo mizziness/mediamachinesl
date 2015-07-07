@@ -1,6 +1,6 @@
 ## Media MachineSL App Build
 Using Laravel 4.2
-By [Tammy J. Shipps](http://atomicpink.com) - [Email](mailto@mizziness@gmail.com)
+By [Tammy J. Shipps](http://atomicpink.com) - [Email](mailto:mizziness@gmail.com)
 
 
 ---
