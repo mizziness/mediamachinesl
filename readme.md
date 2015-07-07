@@ -1,3 +1,11 @@
+## Media MachineSL App Build
+Using Laravel 4.2
+By [Tammy J. Shipps](http://atomicpink.com) - [Email](mailto@mizziness@gmail.com)
+
+
+---
+
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
