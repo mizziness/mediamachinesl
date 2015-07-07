@@ -1,0 +1,104 @@
+$(document).ready(function(){
+	$("a[href='#']").on("click", function(){
+		return false;
+	});
+	
+	if ( $("#home").length <= 0 ) {
+		var step = 420;
+		var columns = Math.ceil($("#carousel-inner .media-box").length / 3);
+		var pages = Math.ceil(columns / 2);
+		var startPage = 1;
+		var currentPage = 1;
+		var totalWidth = columns * step;
+		$("#carousel-inner").width(totalWidth);
+		fixButtons();
+		
+		$(".next.nav-button").on("click", function(){
+			if ( !$(this).hasClass("disabled") ) {
+				currentPage++;
+				$("#carousel-inner").animate({
+					left: "-=" + step * 2
+				}, 1000);
+				fixButtons();
+			};
+		});
+		
+		$(".previous.nav-button").on("click", function(){
+			if ( !$(this).hasClass("disabled") ) {
+				currentPage--;
+				$("#carousel-inner").animate({
+					left: "+=" + step * 2
+				}, 1000);
+			};
+			fixButtons();
+		});
+	
+	} else {
+		var step = 833;
+		var pages = Math.ceil($("#new-releases-inner .new-box").length / 5);
+		var startPage = 1;
+		var currentPage = 1;
+		var totalWidth = pages * step;
+		$("#new-releases-inner").width(totalWidth);
+		fixButtons();
+		
+		$(".next.nav-button").on("click", function(){
+			if ( !$(this).hasClass("disabled") ) {
+				currentPage++;
+				$("#carousel-inner").animate({
+					left: "-=" + step
+				}, 1000);
+				fixButtons();
+			};
+		});
+		
+		$(".previous.nav-button").on("click", function(){
+			if ( !$(this).hasClass("disabled") ) {
+				currentPage--;
+				$("#carousel-inner").animate({
+					left: "+=" + step
+				}, 1000);
+			};
+			fixButtons();
+		});
+		
+		
+	}
+	
+	function fixButtons(){
+		if ( currentPage < 1 ) { currentPage = 1; };
+		if ( currentPage > pages ) { currentPage = pages; };
+			$(".previous.nav-button").add(".next.nav-button").addClass("disabled");
+		if ( currentPage == 1 && pages == 1 ) {
+			
+		} else if ( currentPage == 1 ) {
+			$(".previous.nav-button").addClass("disabled");
+			$(".next.nav-button").removeClass("disabled");
+		} else if ( currentPage == pages ) {
+			$(".next.nav-button").addClass("disabled");
+			$(".previous.nav-button").removeClass("disabled");
+		} else {
+			$(".previous.nav-button").add(".next.nav-button").removeClass("disabled");
+		};		
+	};
+	
+	$("a#rtCategories").on("click", function(){
+		$(".modal").fadeOut("slow");
+		$("#adult-categories.modal").fadeIn("slow");
+	});
+	
+	$("a#rtTags").on("click", function(){
+		$(".modal").fadeOut("slow");
+		$("#adult-tags.modal").fadeIn("slow");
+	});
+	
+	$("a#rtStars").on("click", function(){
+		$(".modal").fadeOut("slow");
+		$("#adult-stars.modal").fadeIn("slow");
+	});
+	
+	$("a.modal-close").on("click", function(){
+		$(this).parents(".modal").fadeOut("slow");
+	});
+
+});

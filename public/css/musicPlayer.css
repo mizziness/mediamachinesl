@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background-color: black;
+	font-family: Tw Cen MT;
+	}
+	
+#Bottom{
+	float: right;
+	position: absolute;
+	text-align:right;
+	bottom: 30px;
+	color:#FFF;
+	left: 30px;
+	font-family: Tw Cen MT;
+	}
+	
+#Bottom2{
+	float: right;
+	position: absolute;
+	text-align:right;
+	bottom: 5px;
+	color:#FFF;
+	left: 30px;
+	font-family: Tw Cen MT;
+	}
+	
+#Top{
+	position: absolute;
+	top: 15px;
+	left: 20px;
+	height: 54px;
+	width: 70px;
+	}
+
+/*.fadein {
+    position:relative;
+    height:320px;
+    width:320px;
+}
+
+.fadein img {
+    position:absolute;
+    left:0;
+    top:0;
+	height:512px;
+    width:1024px;
+}*/
