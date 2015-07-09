@@ -22,5 +22,10 @@ class HomeController extends BaseController {
 			->with("newReleases", $newReleases);
 		return $view;
 	}
+	
+	public function help() {
+		$view = View::make('help');
+		return $view;		
+	}
 
 }

@@ -29,6 +29,8 @@ Route::get('/adult/play/{id}', "MediaController@adultPlay");
 
 Route::get('/youtube', "MediaController@youtube");
 
+Route::get('/help', "HomeController@help");
+
 Route::get('/media/edit/{id}', "AdminController@editMedia");
 Route::get('/media/delete/{id}', "AdminController@deleteMedia");
 Route::post('/media/update/{id}', "AdminController@updateMedia");
