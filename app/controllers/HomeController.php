@@ -16,10 +16,13 @@ class HomeController extends BaseController {
 	*/
 
 	public function init() {
-		$newReleases = DB::table("media")->where("newRelease", 1)->where("active", 1)->orderBy("title")->get();
-		
-		$view = View::make('home')
-			->with("newReleases", $newReleases);
+		if ( isset($_GET["access"]) && $_GET["access"] == "true" ) {
+			$newReleases = DB::table("media")->where("newRelease", 1)->where("active", 1)->orderBy("title")->get();
+			
+			$view = View::make('home')->with("newReleases", $newReleases);			
+		} else {
+			$view = View::make('denied');	
+		}
 		return $view;
 	}
 	
