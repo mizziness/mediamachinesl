@@ -66,8 +66,8 @@
 			</div>
 			<ul class="jp-toggles">
 				<!--<li><a href="javascript:;" class="jp-full-screen" tabindex="1" title="full screen">full screen</a></li>
-				<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>
-				<li><a href="/movies" class="mmsl-back" tabindex="1" title="Go Back">Go Back</a></li>-->
+				<li><a href="javascript:;" class="jp-restore-screen" tabindex="1" title="restore screen">restore screen</a></li>-->
+				<li><a href="/movies" class="mmsl-back" tabindex="1" title="Go Back">Go Back</a></li>
 				<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
 				<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
 				

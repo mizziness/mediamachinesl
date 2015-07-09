@@ -131,6 +131,6 @@ $.vegas('slideshow', {
 <h1 id="Bottom">{{{ $station->title }}}</h1>
 <h2 id="Bottom2">Media MachineSL Radio</h2>
 <div id="jquery_jplayer_1" class="jp-jplayer"></div>
-<div id="Top"><a href="/music"><img src="/images/icon-arrow-open.png" width="60" height="60"  alt=""/></a></div>
+<div id="Top"><a href="/radio"><img src="/images/icon-arrow-open.png" width="60" height="60"  alt=""/></a></div>
 </body>
 </html>
