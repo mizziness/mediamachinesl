@@ -110,7 +110,7 @@ class MediaController extends BaseController {
 	}
 	
 	public function tvShow($slug) {
-		$episodes = DB::table("media")->where("category", "television")->where("parentSlug", $slug)->where("active", 1)->orderBy("title")->get();
+		$episodes = DB::table("media")->where("category", "television")->where("parentSlug", $slug)->where("active", 1)->orderBy("id")->get();
 		$parents = DB::table('media')->where("category", "television")->lists('parent');
 		$latestEpisode = DB::table("media")->where("parentSlug", $slug)->where("active", 1)->orderBy("title", "DESC")->take(1)->first();
 		

@@ -6,9 +6,8 @@
 			<li class="music"><a href="/radio"></a></li>
 			<li class="tv"><a href="/television"></a></li>
 			<li class="games"><a href="/games"></a></li>
-			<li class="adult"><a href="/adult"></a></li>
 			<li class="youtube"><a href="/youtube"></a></li>
-			<!--<li class="shopping"><a href="https://marketplace.secondlife.com/"></a></li>-->
+			<li class="adult"><a href="/adult"></a></li>
 		</ul>
 	</div>
 	<div class="c5">

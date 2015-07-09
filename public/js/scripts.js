@@ -45,7 +45,7 @@ $(document).ready(function(){
 		$(".next.nav-button").on("click", function(){
 			if ( !$(this).hasClass("disabled") ) {
 				currentPage++;
-				$("#carousel-inner").animate({
+				$("#new-releases-inner").animate({
 					left: "-=" + step
 				}, 1000);
 				fixButtons();
@@ -55,7 +55,7 @@ $(document).ready(function(){
 		$(".previous.nav-button").on("click", function(){
 			if ( !$(this).hasClass("disabled") ) {
 				currentPage--;
-				$("#carousel-inner").animate({
+				$("#new-releases-inner").animate({
 					left: "+=" + step
 				}, 1000);
 			};
