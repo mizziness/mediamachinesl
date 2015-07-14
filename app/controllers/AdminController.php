@@ -20,7 +20,7 @@ class AdminController extends BaseController {
 		$music = DB::table("media")->where("category", "radio")->orderBy("id", "DESC")->take(5)->get();
 		$television = DB::table("media")->where("category", "television")->orderBy("id", "DESC")->take(5)->get();
 		$games = DB::table("media")->where("category", "games")->orderBy("id", "DESC")->take(5)->get();
-		$backgrounds = DB::table("backgrounds")->orderBy("id", "DESC")->take(5)->get();
+		$backgrounds = DB::table("backgrounds")->orderBy("id", "DESC")->take(8)->get();
 		
 		$parentFolders = DB::table('media')->lists('parent');
 		$parents = array("" => "Select One");

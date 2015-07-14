@@ -64,7 +64,7 @@ $backgroundsCount = DB::table("backgrounds")->count();
 				
 				<div id="backgrounds-list" class="table-list cf">
 					<h2>Radio Backgrounds</h2>
-					<p>There are currently <strong>{{ $backgroundsCount }}</strong> backgrounds(s) in the database.  Displaying the <strong>5</strong> most recently added.</p>
+					<p>There are currently <strong>{{ $backgroundsCount }}</strong> backgrounds(s) in the database.  Displaying the <strong>8</strong> most recently added.</p>
 					@include('modules.backgroundsList')
 					<p><a href="/admin/view/backgrounds" class="aButton bgBlue" style="float: right; margin-top: 10px;">View All <i class="fa fa-arrow-circle-right"></i></a></p>
 				</div>				
