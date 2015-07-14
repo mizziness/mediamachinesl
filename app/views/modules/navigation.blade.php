@@ -1,7 +1,7 @@
 <div id="navigation">
 	<div class="c7">	
 		<ul class="nav-left">
-			<li class="home"><a href="/"></a></li>
+			<li class="home"><a href="/?access=true"></a></li>
 			<li class="movies"><a href="/movies"></a></li>
 			<li class="music"><a href="/radio"></a></li>
 			<li class="tv"><a href="/television"></a></li>

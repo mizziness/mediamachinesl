@@ -12,6 +12,7 @@ $movieCount = DB::table("media")->where("category", "movies")->count();
 $radioCount = DB::table("media")->where("category", "radio")->count();
 $tvCount = DB::table("media")->where("category", "television")->count();
 $gamesCount = DB::table("media")->where("category", "games")->count();
+$backgroundsCount = DB::table("backgrounds")->count();
 		
 ?>
 @extends('fullpage')
@@ -59,12 +60,19 @@ $gamesCount = DB::table("media")->where("category", "games")->count();
 					<p>There are currently <strong>{{ $gamesCount }}</strong> game(s) in the database.  Displaying the <strong>5</strong> most recently added.</p>
 					@include('modules.gamesList')
 					<p><a href="/admin/view/games" class="aButton bgBlue" style="float: right; margin-top: 10px;">View All <i class="fa fa-arrow-circle-right"></i></a></p>
-				</div>					
+				</div>
+				
+				<div id="backgrounds-list" class="table-list cf">
+					<h2>Radio Backgrounds</h2>
+					<p>There are currently <strong>{{ $backgroundsCount }}</strong> backgrounds(s) in the database.  Displaying the <strong>5</strong> most recently added.</p>
+					@include('modules.backgroundsList')
+					<p><a href="/admin/view/backgrounds" class="aButton bgBlue" style="float: right; margin-top: 10px;">View All <i class="fa fa-arrow-circle-right"></i></a></p>
+				</div>				
 				
 			</div>
 			<div class="c4">
-				<div class="moduleBox">@include('modules.addMedia')
-				</div>
+				<div class="moduleBox">@include('modules.addMedia')</div>
+				<div class="moduleBox">@include('modules.addBackground')</div>
 			</div>
 		</div>
 		

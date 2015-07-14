@@ -228,21 +228,26 @@ body.administration #container .inner-container { width: auto; height: auto; ove
 body.administration { background-color: #f2f2f2; font-size: 14px; }
 body.administration .table-list { margin-bottom: 25px; }
 
-.moduleBox { background-color: #ffffff; border-radius: 10px; padding: 10px; font-size: 13px; }
+.moduleBox { background-color: #ffffff; border-radius: 10px; padding: 10px; font-size: 13px; margin-bottom: 25px; }
 .moduleBox label { font-size: 14px; margin-top: 10px; }
 .moduleBox p { line-height: 1.2; }
 
 body.administration img.thumbnail { width: 45px; height: 55px; }
+body.administration img.bg.thumbnail { width: auto; height: auto; }
 
 body.administration table { border-collapse: separate; border: 1px solid #CDCDCD; background-color: #ffffff; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; }
 body.administration table thead th { padding: 5px 10px; background-color: #c0d2e7; font-size: 14px; }
 body.administration table td { font-size: 12px; padding: 5px; }
 body.administration table td.center { text-align: center; }
-body.administration .actions a { margin: 0 2px; }
+body.administration .actions a { margin: 0 2px; line-height: 1; }
 body.administration .actions a.edit { color: #f97600; font-size: 22px; }
 body.administration .actions a.edit:hover { color: #cd6100; }
 body.administration .actions a.delete { color: #b60000; font-size: 22px; }
 body.administration .actions a.delete:hover { color: #9e0000; }
+
+#backgrounds-list .c3 .thumb, .table-list .c3 .thumb { position: relative; background-color: #ffffff; padding: 5px; border: 1px solid #CDCDCD; border-radius: 4px; }
+#backgrounds-list .c3 .thumb .actions, .table-list .c3 .thumb .actions { text-align: center; padding-top: 3px; position: absolute; right: 10px; top: 5px; }
+#backgrounds-list .c3 .thumb .actions a, .table-list .c3 .thumb .actions a { color: #ffffff; }
 
 body.administration table tr:nth-child(even) {
     background-color: #f0faff;

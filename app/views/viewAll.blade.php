@@ -1,6 +1,6 @@
 @extends('fullpage')
 
-@section('title', 'Administration - Viewing {{ $type }}')
+@section('title', 'Administration - Viewing ' . $type)
 
 @section('content')
 	<div id="admin" class="inner-container">
@@ -19,7 +19,7 @@
 				
 				<div class="table-list cf">
 					<h2>{{ $type }} List</h2>
-					<p>There are currently <strong>{{ count($media) }}</strong> movie(s) in the database.</p>
+					<p>There are currently <strong>{{ count($media) }}</strong> {{ $type }} in the database.</p>
 					<?php  
 						$module = $type . "List";
 					?>

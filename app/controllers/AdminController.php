@@ -20,6 +20,7 @@ class AdminController extends BaseController {
 		$music = DB::table("media")->where("category", "radio")->orderBy("id", "DESC")->take(5)->get();
 		$television = DB::table("media")->where("category", "television")->orderBy("id", "DESC")->take(5)->get();
 		$games = DB::table("media")->where("category", "games")->orderBy("id", "DESC")->take(5)->get();
+		$backgrounds = DB::table("backgrounds")->orderBy("id", "DESC")->take(5)->get();
 		
 		$parentFolders = DB::table('media')->lists('parent');
 		$parents = array("" => "Select One");
@@ -37,7 +38,8 @@ class AdminController extends BaseController {
 			->with("movies", $movies)
 			->with("television", $television)
 			->with("radio", $music)
-			->with("games", $games);
+			->with("games", $games)
+			->with("backgrounds", $backgrounds);
 		return $view;
     }
 	
@@ -196,14 +198,67 @@ class AdminController extends BaseController {
 	
 	public function viewAll($type) {
 		Session::flash('backUrl', Request::fullUrl());
+		if ( $type == "backgrounds" ) {
+			$media = DB::table("backgrounds")->orderBy("id")->get();
 		
-		$media = DB::table("media")->where("category", $type)->orderBy("title")->get();
+			$view = View::make('viewAll')
+				->with("media", $media)
+				->with($type, $media)
+				->with("type", $type);
+			
+		} else {
+			$media = DB::table("media")->where("category", $type)->orderBy("title")->get();
 		
-		$view = View::make('viewAll')
-			->with("media", $media)
-			->with($type, $media)
-			->with("type", $type);
-		return $view;
+			$view = View::make('viewAll')
+				->with("media", $media)
+				->with($type, $media)
+				->with("type", $type);
+		}
+		
+		return $view;	
 	}
+	
+	
+	public function addBackground() {
+		if (Session::has('backUrl')) {
+			Session::keep('backUrl');
+		}
 
+		$backgroundURL = "";
+		$backgroundImage = "";
+				
+		$graphicSlug = "radio-background-" . time();
+		
+		if ( Input::get("backgroundURL") ) {
+			$graphicURL = Input::get("backgroundURL");
+		}
+		
+		if ( Input::hasFile("backgroundImage") ) {
+			$image = Input::file('backgroundImage');
+			$path = public_path() . "/media/backgrounds";
+			$newName = $graphicSlug . "." . $image->getClientOriginalExtension();
+			$graphicThumb = $image->move($path, $newName);
+			$graphicURL = "/media/backgrounds/" . $newName;
+		}
+		
+		DB::table('backgrounds')->insert(array(
+			'url' => $graphicURL
+		));
+		
+		$message = "Background image was added successfully!";
+		return Redirect::action('AdminController@init')->with("message", $message);
+	}
+	
+	public function deleteBackground($id) {
+		if (Session::has('backUrl')) {
+			Session::keep('backUrl');
+		}
+		$url = Session::get('backUrl');
+		
+		DB::table('backgrounds')->where("id", $id)->delete();
+		
+		$message = "Background was deleted successfully!";
+		return Redirect::to($url)->with("message", $message);
+	}
+	
 }

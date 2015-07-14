@@ -64,9 +64,11 @@ class MediaController extends BaseController {
 	}
 	
 	public function playMusic($id) {
-		$station = DB::table("media")->where("id", $id)->where("active", 1)->first();		
+		$station = DB::table("media")->where("id", $id)->where("active", 1)->first();
+		$backgrounds = DB::table("backgrounds")->orderByRaw("RAND()")->get();
 		$view = View::make('playMusic')
-			->with("station", $station);
+			->with("station", $station)
+			->with("backgrounds", $backgrounds);
 		return $view;
 	}
 	
@@ -162,9 +164,9 @@ class MediaController extends BaseController {
 		
 		$results = DB::table("media")
 			->where('title', 'LIKE', '%'. $searchTerm .'%')
-			->orWhere('description', 'LIKE', '%'. $searchTerm .'%')
-			->orWhere('parent', 'LIKE', '%'. $searchTerm .'%')->orderBy("category")
-		->get();
+			//->orWhere('description', 'LIKE', '%'. $searchTerm .'%')
+			//->orWhere('parent', 'LIKE', '%'. $searchTerm .'%')
+		->orderBy("title")->get();
 		
 		$view = View::make('search')
 			->with("results", $results)
