@@ -13,11 +13,17 @@
 	<div class="c5">
 		<ul class="nav-right">
 			<li class="search">
-				@if ( strpos(Route::getCurrentRoute()->getPath(), "adult") === false )
+				@if ( strpos(Route::getCurrentRoute()->getPath(), "adult") === false && strpos(Route::getCurrentRoute()->getPath(), "youtube") === false )
 				{{ Form::open(array('action' => array('MediaController@search'), 'method' => 'POST', 'class' => 'cf')) }}
 					{{ Form::text("search", isset($searchTerm) ? $searchTerm : NULL, array("class" => "search-box", "placeholder" => "Search...")) }}
 					{{ Form::submit('Search', array("class" => "search-button")) }}
 				{{ Form::close() }}
+				@endif
+				@if ( strpos(Route::getCurrentRoute()->getPath(), "youtube") !== false )
+					{{ Form::open(array('url' => "/youtube/browse/search", 'method' => 'GET', 'class' => 'cf')) }}
+						{{ Form::text("search", isset($searchTerm) ? $searchTerm : NULL, array("class" => "yt-search search-box", "placeholder" => "Search YouTube")) }}
+						{{ Form::submit('Search', array("class" => "search-button")) }}
+					{{ Form::close() }}
 				@endif
 			</li>
 			<li class="help"><a href="/help"></a></li>

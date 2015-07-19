@@ -80,3 +80,16 @@ App::down(function()
 */
 
 require app_path().'/filters.php';
+
+App::before(function($request) {
+	App::singleton('youTube', function(){
+		$client = new Google_Client();
+		$client->setApplicationName("MediaMachineSL");
+		$client->setDeveloperKey("AIzaSyBfyTTj9vcb2yZzn3kYslOgmeq8A-YF9Q8");
+		$youtube = new Google_Service_YouTube($client);
+		return $youtube;
+	});
+	$youTube = App::make('youTube');
+  	View::share('youTube', $youTube);
+	
+});

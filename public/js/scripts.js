@@ -82,6 +82,8 @@ $(document).ready(function(){
 		};		
 	};
 	
+	// Adult
+	
 	$("a#rtCategories").on("click", function(){
 		$(".modal").fadeOut("slow");
 		$("#adult-categories.modal").fadeIn("slow");
@@ -99,6 +101,23 @@ $(document).ready(function(){
 	
 	$("a.modal-close").on("click", function(){
 		$(this).parents(".modal").fadeOut("slow");
+	});
+	
+	// YouTube
+	$("a#ytCategories").on("click", function(){
+		$(".modal").fadeOut("slow");
+		$("#youtube-categories.modal").fadeIn("slow");
+	});
+	$("a#ytChannels").on("click", function(){
+		$(".modal").fadeOut("slow");
+		$("#youtube-channels.modal").fadeIn("slow");
+	});
+	
+	$("#youtube .search form").on("submit", function(e){
+		e.preventDefault();
+		var query = $(this).find(".yt-search").val();
+		var href = $(this).attr("action") + "/" + query;
+		window.location.href = href;
 	});
 
 });

@@ -118,5 +118,134 @@ class Helpers {
 		$response = Helpers::RedTubeApiCall($http , $params);	 
 		return json_decode($response, true);
 	}
+	
+	/*************************** YouTube ***************************/
+	public static function getYTCategories() {		
+		$APIURL = "https://www.googleapis.com/youtube/v3/videoCategories";
+		$fields = array(
+			"part" => "snippet",
+			"key" => "AIzaSyBfyTTj9vcb2yZzn3kYslOgmeq8A-YF9Q8",
+			"regionCode" => "US"
+		);
+		$fieldstr = http_build_query($fields, '', '&');
+		
+		// Create our cURL call and set the parameters
+        $call = curl_init();
+		curl_setopt($call, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+        curl_setopt($call, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($call, CURLOPT_HTTPGET, true);
+        curl_setopt($call, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($call, CURLOPT_URL, $APIURL . "?" . $fieldstr);
+        curl_setopt($call, CURLOPT_POSTFIELDS, null);
+        curl_setopt($call, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($call, CURLOPT_SSL_VERIFYPEER, TRUE);
+		
+		// Execute the call
+		$result = curl_exec($call);
+		$httpCode = curl_getinfo($call, CURLINFO_HTTP_CODE);
+
+		$values = json_decode($result,true);
+		return $values;
+	}
+	
+	public static function getYTChannelGuides() {		
+		$APIURL = "https://www.googleapis.com/youtube/v3/guideCategories";
+		$fields = array(
+			"part" => "snippet",
+			"key" => "AIzaSyBfyTTj9vcb2yZzn3kYslOgmeq8A-YF9Q8",
+			"regionCode" => "US"
+		);
+		$fieldstr = http_build_query($fields, '', '&');
+		
+		// Create our cURL call and set the parameters
+        $call = curl_init();
+		curl_setopt($call, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+        curl_setopt($call, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($call, CURLOPT_HTTPGET, true);
+        curl_setopt($call, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($call, CURLOPT_URL, $APIURL . "?" . $fieldstr);
+        curl_setopt($call, CURLOPT_POSTFIELDS, null);
+        curl_setopt($call, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($call, CURLOPT_SSL_VERIFYPEER, TRUE);
+		
+		// Execute the call
+		$result = curl_exec($call);
+		$httpCode = curl_getinfo($call, CURLINFO_HTTP_CODE);
+
+		$values = json_decode($result,true);
+		return $values;
+	}
+	
+	public static function getYTPopular($snippet = "snippet", $chart = "mostPopular", $max = 24, $region = "US"){		
+		$APIURL = "https://www.googleapis.com/youtube/v3/videos";
+		$fields = array(
+			"part" => $snippet,
+			"key" => "AIzaSyBfyTTj9vcb2yZzn3kYslOgmeq8A-YF9Q8",
+			"regionCode" => $region,
+			"chart" => $chart,
+			"maxResults" => $max		
+		);
+		$fieldstr = http_build_query($fields, '', '&');
+		
+		// Create our cURL call and set the parameters
+        $call = curl_init();
+		curl_setopt($call, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+        curl_setopt($call, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($call, CURLOPT_HTTPGET, true);
+        curl_setopt($call, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($call, CURLOPT_URL, $APIURL . "?" . $fieldstr);
+        curl_setopt($call, CURLOPT_POSTFIELDS, null);
+        curl_setopt($call, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($call, CURLOPT_SSL_VERIFYPEER, TRUE);
+		
+		// Execute the call
+		$result = curl_exec($call);
+		$httpCode = curl_getinfo($call, CURLINFO_HTTP_CODE);
+
+		$values = json_decode($result,true);
+		return $values;
+	}
+	
+	public static function getYTSearch($data){
+		$category = array_key_exists("category", $data) ? $data["category"] : "";
+		$term = array_key_exists("term", $data) ? $data["term"] : "";	
+		
+		$APIURL = "https://www.googleapis.com/youtube/v3/search";
+		
+		$fields = array(
+			"part" => "snippet",
+			"key" => "AIzaSyBfyTTj9vcb2yZzn3kYslOgmeq8A-YF9Q8",
+			"regionCode" => "US",
+			"maxResults" => 23,
+			"videoCategoryId" => $category,
+			"type" => "video",
+			"q" => $term,
+			"relevanceLanguage" => "en",
+			"order" => "relevance",
+			"safeSearch" => "none"
+		);
+		if ( array_key_exists("pageToken", $data) ) {
+			$fields["pageToken"] = $data["pageToken"];
+		}		
+		$fieldstr = http_build_query($fields, '', '&');
+		
+		// Create our cURL call and set the parameters
+        $call = curl_init();
+		curl_setopt($call, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+        curl_setopt($call, CURLOPT_CUSTOMREQUEST, 'GET');
+        curl_setopt($call, CURLOPT_HTTPGET, true);
+        curl_setopt($call, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($call, CURLOPT_URL, $APIURL . "?" . $fieldstr);
+        curl_setopt($call, CURLOPT_POSTFIELDS, null);
+        curl_setopt($call, CURLOPT_SSL_VERIFYHOST, 2);
+        curl_setopt($call, CURLOPT_SSL_VERIFYPEER, TRUE);
+		
+		// Execute the call
+		$result = curl_exec($call);
+		$httpCode = curl_getinfo($call, CURLINFO_HTTP_CODE);
+
+		$values = json_decode($result,true);
+		return $values;
+	}
 						
 }

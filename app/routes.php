@@ -28,6 +28,8 @@ Route::get('/adult/browse/{type}/{value}/{page?}', "MediaController@adultBrowse"
 Route::get('/adult/play/{id}', "MediaController@adultPlay");
 
 Route::get('/youtube', "MediaController@youtube");
+Route::get('/youtube/browse/{type}/{value}/{page?}', "MediaController@youtubeBrowse");
+Route::get('/youtube/play/{id}', "MediaController@youtubePlay");
 
 Route::get('/help', "HomeController@help");
 

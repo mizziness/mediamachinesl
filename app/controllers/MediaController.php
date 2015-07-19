@@ -177,7 +177,50 @@ class MediaController extends BaseController {
 	/********* YouTube *********/
 	
 	public function youTube() {
-		$view = View::make('youtube');
+		$youTube = App::make('youTube');
+		$ytCategories = Helpers::getYTCategories();
+		$ytBest = Helpers::getYTPopular();
+		
+		$view = View::make('youtube')			
+			->with("ytCategories", $ytCategories["items"])
+			->with("ytBest", $ytBest["items"]);
+		return $view;
+	}
+	
+	public function youtubeBrowse($type, $value, $page = 1) {
+		$youTube = App::make('youTube');
+		$ytCategories = Helpers::getYTCategories();
+		$ytBest = Helpers::getYTPopular();
+		
+		$data = array();
+		if ( $type == "guide" ) { $data["guide"] = $value; }
+		if ( $type == "category" ) { $data["category"] = $value; }
+		if ( $type == "search" ) { $data["term"] = $value; }
+		if ( $page != 1 ) { $data["pageToken"] = $page; }
+		
+		$results = Helpers::getYTSearch($data);
+		$nextPage = isset($results["nextPageToken"]) ? $results["nextPageToken"] : "";
+		
+		$prettyCats = array();
+		foreach( $ytCategories["items"] as $cat ) {
+			$prettyCats[$cat["id"]] = $cat["snippet"]["title"];
+		}
+		
+		$view = View::make('youTubeBrowse')
+			->with("nextPage", $nextPage)
+			->with("browseType", $type)
+			->with("browseValue", $value)
+			->with("page", $page)
+			->with("results", $results)
+			->with("ytCategories", $ytCategories["items"])
+			->with("prettyCats", $prettyCats);
+		return $view;
+	}
+	
+	public function youTubePlay($id) {
+			
+		$view = View::make('playYouTube')
+			->with("id", $id);
 		return $view;
 	}
 	
