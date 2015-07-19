@@ -206,6 +206,8 @@ class MediaController extends BaseController {
 			$prettyCats[$cat["id"]] = $cat["snippet"]["title"];
 		}
 		
+		Session::put('youTubeBack', Request::fullUrl());
+		
 		$view = View::make('youTubeBrowse')
 			->with("nextPage", $nextPage)
 			->with("browseType", $type)
@@ -217,8 +219,7 @@ class MediaController extends BaseController {
 		return $view;
 	}
 	
-	public function youTubePlay($id) {
-			
+	public function youTubePlay($id) {			
 		$view = View::make('playYouTube')
 			->with("id", $id);
 		return $view;

@@ -1,3 +1,9 @@
+<?php
+	$returnUrl = "/youtube";
+	if (Session::has('youTubeBack')) {
+		$returnUrl = Session::get('youTubeBack');
+	}
+?>
 <!doctype html>
 <html>
   <head>
@@ -11,7 +17,7 @@
 
 	<body>
   
-	<div id="backbutton"><a href="/youtube"><img src="/images/icon-arrow-open.png"></a></div>
+	<div id="backbutton"><a href="{{ $returnUrl }}"><img src="/images/icon-arrow-open.png"></a></div>
 	
 	<iframe id="ytplayer" type="text/html" width="100%" height="100%" src="http://www.youtube.com/embed/{{ $id }}?autoplay=1" frameborder="0"/>
 	
