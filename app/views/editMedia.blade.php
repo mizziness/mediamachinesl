@@ -60,6 +60,7 @@ $mediaTypes = array(
 					
 					<label for="featured">Featured: {{ Form::checkbox("featured", "1", $media->featured ? "true" : "") }}</label>
 					<label for="newRelease">New Release: {{ Form::checkbox("newRelease", "1", $media->newRelease ? "true" : "") }}</label>	
+					<label for="demo">Demo: {{ Form::checkbox("demo", "1", $media->demo ? "true" : "") }}</label>
 					<label for="active">Active: {{ Form::checkbox("active", "1", $media->active ? "true" : "") }}</label>
 					
 					{{ Form::label("mediaParent", "Parent Folder") }}

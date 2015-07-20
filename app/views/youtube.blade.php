@@ -11,10 +11,12 @@
 				<img src="/images/YouTube-Transparent-Logo.png">
 				<h3>Viewing:</h3>
 				<p class="current">24 Most Popular</p>
+				@if ( !Session::has('demo') ) 
 				<h3>Browse By:</h3>
 				<p>					
 					<a id="ytCategories" href="#"><i class="fa fa-folder-open"></i> Categories</a>
-				</p>				
+				</p>
+				@endif				
 			</div>
 		</div>
 		<div class="c10">

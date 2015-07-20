@@ -3,6 +3,9 @@
 @section('title', 'Movies')
 
 @section('content')
+	@if ( Session::has('demo') ) 
+	<div id="demo-screen"></div>
+	@endif
 <div id="search" class="media inner-container"> @include('modules.navigation')
 	<div class="c10 s1">
 		<div id="carousel" class="cf">

@@ -7,7 +7,11 @@
 		@include('modules.navigation')
 		
 		<div class="c10 s1 home-screen">
-			<h2><i class="fa fa-star-o"></i> New Releases <i class="fa fa-star-o"></i></h2>
+			@if ( Session::has('demo') ) 
+				<h2><i class="fa fa-star-o"></i> Demo Content <i class="fa fa-star-o"></i></h2>
+			@else
+				<h2><i class="fa fa-star-o"></i> New Releases <i class="fa fa-star-o"></i></h2>
+			@endif
 			<div id="new-releases">
 				<div id="new-releases-inner">
 					@foreach ( $newReleases as $media )

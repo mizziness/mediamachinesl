@@ -21,6 +21,7 @@ class AdminController extends BaseController {
 		$television = DB::table("media")->where("category", "television")->orderBy("id", "DESC")->take(5)->get();
 		$games = DB::table("media")->where("category", "games")->orderBy("id", "DESC")->take(5)->get();
 		$backgrounds = DB::table("backgrounds")->orderBy("id", "DESC")->take(8)->get();
+		$demos = DB::table("media")->where("demo", 1)->orderBy("id", "DESC")->take(5)->get();
 		
 		$parentFolders = DB::table('media')->lists('parent');
 		$parents = array("" => "Select One");
@@ -39,7 +40,8 @@ class AdminController extends BaseController {
 			->with("television", $television)
 			->with("radio", $music)
 			->with("games", $games)
-			->with("backgrounds", $backgrounds);
+			->with("backgrounds", $backgrounds)
+			->with("demos", $demos);
 		return $view;
     }
 	
@@ -55,6 +57,7 @@ class AdminController extends BaseController {
 		$mediaDescription = Input::get("mediaDescription");
 		$featured = Input::get("featured") ?: "0";
 		$newRelease = Input::get("newRelease") ?: "0";
+		$demo = Input::get("demo") ?: "0";
 		$active = Input::get("active") ?: "0";
 		
 		// Parent
@@ -91,7 +94,8 @@ class AdminController extends BaseController {
 			'newRelease' => $newRelease,
 			'active' => $active,
 			'parent' => $parent,
-			'parentSlug' => $parentSlug
+			'parentSlug' => $parentSlug,
+			'demo' => $demo
 		));
 		
 		$message = "Media was added successfully!";
@@ -135,6 +139,7 @@ class AdminController extends BaseController {
 		$mediaDescription = Input::get("mediaDescription");
 		$featured = Input::get("featured") ?: "0";
 		$newRelease = Input::get("newRelease") ?: "0";
+		$demo = Input::get("demo") ?: "0";
 		$active = Input::get("active") ?: "0";
 		
 		// Parent
@@ -158,7 +163,8 @@ class AdminController extends BaseController {
 			'newRelease' => $newRelease,
 			'active' => $active,
 			'parent' => $parent,
-			'parentSlug' => $parentSlug
+			'parentSlug' => $parentSlug,
+			'demo' => $demo
 		);
 		
 		if ( $mediaType == "radio") {
@@ -174,9 +180,7 @@ class AdminController extends BaseController {
 			$mediaThumb = "/media/thumbnails/" . $newName;
 			
 			$data['thumbnail'] = $mediaThumb;
-		}
-		
-		
+		}		
 		
 		DB::table('media')->where("id", $id)->update($data);
 		
@@ -200,6 +204,14 @@ class AdminController extends BaseController {
 		Session::flash('backUrl', Request::fullUrl());
 		if ( $type == "backgrounds" ) {
 			$media = DB::table("backgrounds")->orderBy("id")->get();
+		
+			$view = View::make('viewAll')
+				->with("media", $media)
+				->with($type, $media)
+				->with("type", $type);
+			
+		} else if ( $type == "demos" ) {
+			$media = DB::table("media")->where("demo", 1)->orderBy("id")->get();
 		
 			$view = View::make('viewAll')
 				->with("media", $media)

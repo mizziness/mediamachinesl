@@ -16,7 +16,7 @@
 		@yield('scripts')
 	</head>
 	
-	<body>
+	<body {{ !Session::has('demo') ? "" : "class='demo'" }}>
 		<div id="container" class="grid">
 		@yield('content')
 		</div>

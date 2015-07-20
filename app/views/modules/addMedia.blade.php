@@ -16,7 +16,8 @@
 	{{ Form::textarea("mediaDescription") }}
 	
 	<label for="featured">Featured: {{ Form::checkbox("featured", "1") }}</label>
-	<label for="newRelease">New Release: {{ Form::checkbox("newRelease", "1") }}</label>	
+	<label for="newRelease">New Release: {{ Form::checkbox("newRelease", "1") }}</label>
+	<label for="demo">Demo: {{ Form::checkbox("demo", "1") }}</label>
 	<label for="active">Active: {{ Form::checkbox("active", "1", true) }}</label>
 	
 	{{ Form::label("mediaParent", "Parent Folder") }}

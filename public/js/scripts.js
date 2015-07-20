@@ -3,6 +3,10 @@ $(document).ready(function(){
 		return false;
 	});
 	
+	$(".disabled").on("click", function(){
+		return false;
+	});
+	
 	if ( $("#home").length <= 0 ) {
 		var step = 420;
 		var columns = Math.ceil($("#carousel-inner .media-box").length / 3);

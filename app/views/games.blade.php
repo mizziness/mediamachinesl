@@ -3,6 +3,9 @@
 @section('title', 'Games')
 
 @section('content')
+	@if ( Session::has('demo') ) 
+	<div id="demo-screen"></div>
+	@endif
 	<div id="games" class="media inner-container">
 		@include('modules.navigation')
 		

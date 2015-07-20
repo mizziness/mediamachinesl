@@ -16,8 +16,19 @@ class HomeController extends BaseController {
 	*/
 
 	public function init() {
+		if ( isset($_GET["demo"]) ) {
+			// Demo HUD - hide content!
+			Session::put('demo', true);
+		} else {
+			Session::forget('demo');
+		}
+		
 		if ( isset($_GET["access"]) && $_GET["access"] == "true" ) {
-			$newReleases = DB::table("media")->where("newRelease", 1)->where("active", 1)->orderBy("title")->get();
+			if ( Session::has('demo') ) {
+				$newReleases = DB::table("media")->where("newRelease", 1)->where("active", 1)->where("demo", 1)->orderBy("category", "title")->get();
+			} else {
+				$newReleases = DB::table("media")->where("newRelease", 1)->where("active", 1)->orderBy("title")->get();
+			}
 			
 			$view = View::make('home')->with("newReleases", $newReleases);			
 		} else {

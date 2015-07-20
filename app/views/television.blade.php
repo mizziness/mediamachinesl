@@ -3,6 +3,9 @@
 @section('title', 'Television Shows')
 
 @section('content')
+	@if ( Session::has('demo') ) 
+	<div id="demo-screen"></div>
+	@endif
 	<div id="television" class="media inner-container">
 		@include('modules.navigation')
 

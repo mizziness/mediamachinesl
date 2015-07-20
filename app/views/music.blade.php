@@ -3,6 +3,9 @@
 @section('title', 'Radio')
 
 @section('content')
+	@if ( Session::has('demo') ) 
+	<div id="demo-screen"></div>
+	@endif
 	<div id="music" class="media inner-container">
 		@include('modules.navigation')
 		
