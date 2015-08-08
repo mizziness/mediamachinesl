@@ -23,9 +23,18 @@ class HomeController extends BaseController {
 			Session::forget('demo');
 		}
 		
+		if ( isset($_GET["musicOnly"]) ) {
+			// Demo HUD - hide content!
+			Session::put('musicOnly', true);
+		} else {
+			Session::forget('musicOnly');
+		}
+		
 		if ( isset($_GET["access"]) && $_GET["access"] == "true" ) {
 			if ( Session::has('demo') ) {
 				$newReleases = DB::table("media")->where("active", 1)->where("demo", 1)->orderBy("category", "title")->get();
+			} else if ( Session::has('musicOnly') ) {
+				$newReleases = DB::table("media")->where("category", "radio")->where("active", 1)->orderBy("title")->get();
 			} else {
 				$newReleases = DB::table("media")->where("newRelease", 1)->where("active", 1)->orderBy("title")->get();
 			}

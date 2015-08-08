@@ -7,6 +7,10 @@ $(document).ready(function(){
 		return false;
 	});
 	
+	$("body.demo #featured a").on("click", function(){
+		return false;
+	});
+	
 	if ( $("#home").length <= 0 ) {
 		var step = 420;
 		var columns = Math.ceil($("#carousel-inner .media-box").length / 3);
@@ -38,7 +42,7 @@ $(document).ready(function(){
 		});
 	
 	} else {
-		var step = 833;
+		var step = 840;
 		var pages = Math.ceil($("#new-releases-inner .new-box").length / 5);
 		var startPage = 1;
 		var currentPage = 1;
