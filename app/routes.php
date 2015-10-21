@@ -41,4 +41,6 @@ Route::post('/admin/add', "AdminController@addMedia");
 Route::post('/admin/addBackground', "AdminController@addBackground");
 Route::get('/backgrounds/delete/{id}', "AdminController@deleteBackground");
 Route::get('/admin/view/{type}', "AdminController@viewAll");
+
+Route::get('/connect', "HomeController@connect");
 Route::get('/', "HomeController@init");
