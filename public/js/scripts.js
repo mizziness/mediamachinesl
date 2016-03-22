@@ -15,6 +15,10 @@ $(document).ready(function(){
 		var step = 420;
 		var columns = Math.ceil($("#carousel-inner .media-box").length / 3);
 		var pages = Math.ceil(columns / 2);
+		if ( $("#music").length > 0 ) {
+			pages = Math.ceil(columns / 4);
+		};
+		
 		var startPage = 1;
 		var currentPage = 1;
 		var totalWidth = columns * step;
@@ -124,6 +128,13 @@ $(document).ready(function(){
 	$("#youtube .search form").on("submit", function(e){
 		e.preventDefault();
 		var query = $(this).find(".yt-search").val();
+		var href = $(this).attr("action") + "/" + query;
+		window.location.href = href;
+	});
+	
+	$("#adult .search form").on("submit", function(e){
+		e.preventDefault();
+		var query = $(this).find(".rt-search").val();
 		var href = $(this).attr("action") + "/" + query;
 		window.location.href = href;
 	});

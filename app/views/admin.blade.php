@@ -14,7 +14,9 @@ $tvCount = DB::table("media")->where("category", "television")->count();
 $gamesCount = DB::table("media")->where("category", "games")->count();
 $backgroundsCount = DB::table("backgrounds")->count();
 $demoCount = DB::table("media")->where("demo", "1")->count();
-		
+$newCount = DB::table("media")->where("newRelease", "1")->count();
+$featuredCount = DB::table("media")->where("featured", "1")->count();
+	
 ?>
 @extends('fullpage')
 
@@ -75,6 +77,20 @@ $demoCount = DB::table("media")->where("demo", "1")->count();
 					<p>There are currently <strong>{{ $demoCount }}</strong> items marked for demo in the database.  Displaying the <strong>5</strong> most recently added.</p>
 					@include('modules.demoList')
 					<p><a href="/admin/view/demo" class="aButton bgBlue" style="float: right; margin-top: 10px;">View All <i class="fa fa-arrow-circle-right"></i></a></p>
+				</div>
+                
+                <div id="new-list" class="table-list cf">
+					<h2>New Releases</h2>
+					<p>There are currently <strong>{{ $newCount }}</strong> items marked as new releases in the database.  Displaying the <strong>5</strong> most recently added.</p>
+					@include('modules.newReleasesList')
+					<p><a href="/admin/view/newReleases" class="aButton bgBlue" style="float: right; margin-top: 10px;">View All <i class="fa fa-arrow-circle-right"></i></a></p>
+				</div>	
+                
+                <div id="featured-list" class="table-list cf">
+					<h2>Featured Items</h2>
+					<p>There are currently <strong>{{ $featuredCount }}</strong> items marked as featured in the database.  Displaying the <strong>5</strong> most recently added.</p>
+					@include('modules.featuredList')
+					<p><a href="/admin/view/featured" class="aButton bgBlue" style="float: right; margin-top: 10px;">View All <i class="fa fa-arrow-circle-right"></i></a></p>
 				</div>		
 				
 			</div>

@@ -31,8 +31,8 @@
 						@endif
 						<div class="media-box cf">
 							<a href="/radio/play/{{ $station->id }}">
-							<div class="thumbnail"><img class="thumbnail" src="{{ $station->thumbnail }}"></div>
-							<div class="title">{{ $station->title }}</div>
+							<!--<div class="thumbnail"><img class="thumbnail" src="{{ $station->thumbnail }}"></div>-->
+							<div class="title"><i class="fa fa-music"></i> {{ $station->title }}</div>
 							<div class="description">{{ $station->description }}</div>
 							</a>
 						</div>

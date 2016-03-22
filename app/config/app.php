@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://v2.mediamachinesl.com',
 
 	/*
 	|--------------------------------------------------------------------------

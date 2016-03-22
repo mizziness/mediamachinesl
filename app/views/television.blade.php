@@ -39,8 +39,11 @@
 						@endforeach
 					</div>
 				</div>
-				<div class="previous nav-button"><span>&#171;</span> Previous</div>
-				<div class="next nav-button">Next <span>&#187;</span></div>
+				
+				@if ( count($parents) > 6 )
+					<div class="previous nav-button"><span>&#171;</span> Previous</div>
+					<div class="next nav-button">Next <span>&#187;</span></div>
+				@endif
 			</div>			
 						
 		@else
