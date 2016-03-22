@@ -22,6 +22,8 @@ class AdminController extends BaseController {
 		$games = DB::table("media")->where("category", "games")->orderBy("id", "DESC")->take(5)->get();
 		$backgrounds = DB::table("backgrounds")->orderBy("id", "DESC")->take(8)->get();
 		$demos = DB::table("media")->where("demo", 1)->orderBy("id", "DESC")->take(5)->get();
+		$newReleases = DB::table("media")->where("newRelease", 1)->orderBy("id", "DESC")->take(5)->get();
+		$featured = DB::table("media")->where("featured", 1)->orderBy("id", "DESC")->take(5)->get();
 		
 		$parentFolders = DB::table('media')->lists('parent');
 		$parents = array("" => "Select One");
@@ -41,7 +43,9 @@ class AdminController extends BaseController {
 			->with("radio", $music)
 			->with("games", $games)
 			->with("backgrounds", $backgrounds)
-			->with("demos", $demos);
+			->with("demos", $demos)
+			->with("newReleases", $newReleases)
+			->with("featured", $featured);
 		return $view;
     }
 	

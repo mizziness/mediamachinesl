@@ -1,4 +1,4 @@
-body { padding: 0; color: #e2e2e2; font-size: 12px; line-height: 1.6em; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; background-color: #0a0a0a; background-position: center top; background-repeat: no-repeat; margin-bottom: 20px; margin-left: 0; margin-right: 0; margin-top: 0; }
+body { overflow-y: hidden; padding: 0; color: #e2e2e2; font-size: 12px; line-height: 1.6em; font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; background-color: #0a0a0a; background-position: center top; background-repeat: no-repeat; margin-bottom: 20px; margin-left: 0; margin-right: 0; margin-top: 0; }
 a, a:link, a:visited { color: #0000ff; font-weight: normal; text-decoration: none }
 ul, li { padding: 0; margin: 0; list-style: none; }
 h1, h2, h3, h4, h5, h6 { color: #FFF; font-weight: normal; }
@@ -71,5 +71,40 @@ img { margin: 0; padding: 0; border: none }
 .box8:hover { background-color: #4b4b4b }
 table.genreTable { text-align: center; background: #009be3; color: #FFF; font-size: 28px; width: 800px; column-width: auto; }
 table.genreTable1 { text-align: center; background: #009be3; color: #FFF; font-size: 28px; width: 800px; column-width: auto; }
-.genrenames { text-align: left; Scroll 20px 25px
+.genrenames { text-align: left; }
+
+.flowplayer { background-color: #222; background-size: cover; }
+.flowplayer .fp-controls { background-color: rgba(17, 17, 17, 1)}
+.flowplayer .fp-timeline { background-color: rgba(204, 204, 204, 1)}
+.flowplayer .fp-progress { background-color: rgba(0, 167, 200, 1)}
+.flowplayer .fp-buffer { background-color: rgba(249, 249, 249, 1)}
+
+.fp-embed { display: none !important; visibility: hidden !important; }
+.flowplayer .fp-engine, .flowplayer .fp-ui, .flowplayer .fp-message { height: 90% !important; }
+.mmsl-back {
+    background-image: linear-gradient(to bottom, rgba(136, 136, 136, 0.85), rgba(0, 0, 0, 0.85));
+    border-radius: 3px;
+    color: #eee !important;
+    cursor: pointer;
+    display: none;
+    height: 35px;
+    left: auto;
+    position: absolute;
+    right: 56px;
+    text-align: center;
+    top: 12px;
+    width: 95px;
+    z-index: 50;
+    line-height: 32px;
+    font-size: 16px !important;
 }
+
+.flowplayer.is-mouseover .mmsl-back { display: block; }
+
+.flowplayer {
+    background-color: transparent !important;
+}
+
+/*.flowplayer.fixed-controls .fp-controls, .flowplayer.fixed-controls.is-mouseover .fp-controls { bottom: 0px !important; }
+.flowplayer.fixed-controls .fp-time em { bottom: 10px !important; }
+a[href='http://flowplayer.org'] { display: none !important; }*/
