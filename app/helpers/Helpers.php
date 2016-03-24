@@ -87,7 +87,7 @@ class Helpers {
 		);
 		
 		$params = array_merge($params, $data);		
-		$response = Helpers::RedTubeApiCall($http , $params);	 
+		$response = Helpers::RedTubeApiCall($http , $params);	
 		return json_decode($response, true);
 	}
 	
@@ -217,7 +217,7 @@ class Helpers {
 			"key" => "AIzaSyBfyTTj9vcb2yZzn3kYslOgmeq8A-YF9Q8",
 			"regionCode" => "US",
 			"maxResults" => 23,
-			"videoCategoryId" => $category,
+			//"videoCategoryId" => $category,
 			"type" => "video",
 			"q" => $term,
 			"relevanceLanguage" => "en",

@@ -320,6 +320,9 @@ class MediaController extends BaseController {
 			$data["stars"] = array($stars[$value]);
 			$prettyValue = $stars[$value];
 		}
+		if ( $type == "search" ) {
+			$data["search"] = $value;
+		}
 		$data["page"] = $page;
 		
 		$results = Helpers::searchRedTube($data);
