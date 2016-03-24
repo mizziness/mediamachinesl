@@ -191,5 +191,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
 	),
+	
+	'pg' => false,
 
 );

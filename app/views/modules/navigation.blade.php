@@ -8,7 +8,7 @@
 				<li class="tv"><a href="/television"></a></li>
 				<li class="games"><a href="/games"></a></li>
 				<li class="youtube"><a href="/youtube"></a></li>
-				@if ( !Session::has('demo') ) 
+				@if ( !Session::has('demo') && !App::environment('pg') ) 
 					<li class="adult"><a href="/adult"></a></li>
 				@endif
 			@endif

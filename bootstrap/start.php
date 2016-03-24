@@ -24,11 +24,14 @@ $app = new Illuminate\Foundation\Application;
 |
 */
 
-$env = $app->detectEnvironment(array(
-
-	'local' => array('homestead'),
-
-));
+$env = $app->detectEnvironment(function() {
+	$hostData = apache_request_headers();
+	
+	if ( $hostData["Host"] == "v2pg.mediamachinesl.com" ) {
+		return "pg";
+	}
+	
+});
 
 /*
 |--------------------------------------------------------------------------

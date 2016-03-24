@@ -224,6 +224,10 @@ class Helpers {
 			"order" => "relevance",
 			"safeSearch" => "none"
 		);
+		
+		if ( App::environment('pg') ) {
+			$fields["safeSearch"] = "strict";
+		}
 		if ( array_key_exists("pageToken", $data) ) {
 			$fields["pageToken"] = $data["pageToken"];
 		}		

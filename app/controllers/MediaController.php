@@ -228,6 +228,9 @@ class MediaController extends BaseController {
 	/********* Adult / RedTube *********/
 	
 	public function adult() {
+		if ( App::environment('pg') ) {
+			return Redirect::action('HomeController@init'); 
+		}
 		$rtCategories = Helpers::redTubeCategories();
 		$categories = array();
 		foreach ( $rtCategories["categories"] as $cat ) {
@@ -266,6 +269,10 @@ class MediaController extends BaseController {
 	}
 	
 	public function adultBrowse($type, $value, $page = 1) {
+		if ( App::environment('pg') ) {
+			return Redirect::action('HomeController@init'); 
+		}
+		
 		$rtCategories = Helpers::redTubeCategories();
 		$categories = array();
 		foreach ( $rtCategories["categories"] as $cat ) {
@@ -340,6 +347,9 @@ class MediaController extends BaseController {
 	}
 	
 	public function adultPlay($id) {
+		if ( App::environment('pg') ) {
+			return Redirect::action('HomeController@init'); 
+		}
 		$video = Helpers::getRTVideo($id);
 			
 		$view = View::make('playAdult')
