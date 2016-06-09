@@ -25,6 +25,14 @@
 					<li><i class="fa fa-check-square-o"></i> If you can hear the television but can not see it, read over <a href="http://community.secondlife.com/t5/Technical/Why-can-t-I-see-any-media-on-a-prim-I-hear-it-but-only-see-a/qaq-p/2259285" target="_blank">this Q&A from the SL Forums</a></li>
 					<li><i class="fa fa-check-square-o"></i> Enable YouTube theater mode (picture below)<br><img src="/images/TheaterMode.png" width="500" /></li>
 				</ul>
+				
+				<h3>Still having issues with media playing?</h3>
+				<p>Here are a few other articles and help documents related to various reasons your TV may not be working properly:</p>
+				<ul>
+					<li><a href="http://wiki.phoenixviewer.com/fs_media" target="_blank">Music and Media Issues - Firestorm Wiki</a></li>
+					<li><a href="http://www.firestormviewer.org/tv-not-working-on-4-7-7/" target="_blank">TV not working on 4.7.7? - Firestorm Wiki</a></li>
+					<li><a href="https://community.secondlife.com/t5/English-Knowledge-Base/How-to-use-Adobe-Flash-in-Second-Life-Viewer-4-0-and-later/ta-p/2987182" target="_blank">How to use Adobe Flash in Second Life Viewer 4.0 and later - SecondLife Knowledge Base</a></li>
+				</ul>
 			</div>
 		</div>	
 	</div>
