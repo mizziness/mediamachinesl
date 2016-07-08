@@ -1,3 +1,9 @@
+<?php
+	$bodyClass = "";
+	if ( Session::has('demo') ) {
+		$bodyClass .= "demo";
+	}
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
@@ -13,11 +19,12 @@
 		<link rel="stylesheet" type="text/css" href="/css/gridiculous.css" />
 		<link rel="stylesheet" type="text/css" href="/css/styles.css" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://use.fontawesome.com/1c96f20fa4.js"></script>
 		<script src="/js/scripts.js"></script>
 		@yield('scripts')
 	</head>
 	
-	<body {{ !Session::has('demo') ? "" : "class='demo'" }}>
+	<body class="{{ $bodyClass }}">
 		<div id="container" class="grid">
 		@yield('content')
 		</div>

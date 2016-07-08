@@ -36,7 +36,8 @@
 					{{ Form::close() }}
 				@endif
 			</li>
-			<li class="help"><a href="/help"></a></li>
+            <li class="settings"><a href="/settings"><i class="fa fa-2x fa-cogs" aria-hidden="true"></i></a><li>
+			<li class="help"><a href="/help"><i class="fa fa-2x fa-question" aria-hidden="true"></i></a></li>
 		</ul>
 	</div>
 </div>

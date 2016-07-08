@@ -30,9 +30,14 @@ class MediaController extends BaseController {
 	}
 	
 	public function playMovie($id) {
-		$movie = DB::table("media")->where("id", $id)->where("active", 1)->first();		
+		$movie = DB::table("media")->where("id", $id)->where("active", 1)->first();
+		$customerID = NULL;
+		if ( Session::has("customerID") ) {
+			$customerID = Session::get("customerID");
+		}
 		$view = View::make('playMovie')
-			->with("movie", $movie);
+			->with("movie", $movie)
+			->with("customerID", $customerID);
 		return $view;
 	}
 	

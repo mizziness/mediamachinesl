@@ -251,5 +251,73 @@ class Helpers {
 		$values = json_decode($result,true);
 		return $values;
 	}
+	
+	public static function getSLName( $key ) {
+		libxml_use_internal_errors(true);
+		$url = "http://world.secondlife.com/resident/" . $key;		
+		$html = file_get_contents($url);
+		
+		$doc = new DOMDocument();
+		$doc->loadHTML($html);
+		$xpath = new DOMXpath($doc);
+		
+		$displayName = $doc->getElementsByTagName("title");
+		$checkName = preg_match("/\((.*)\)/", Helpers::get_child_text($displayName), $getLegacyName);
+		
+		$name = Helpers::get_child_text($displayName);
+		if ( $checkName ) {
+			$name = str_replace(".", " ", $getLegacyName[1]);
+		}
+		return $name;		
+	}
+	
+	public static function get_child_text($data) {
+		$text = "";
+		if (!is_null($data)) {
+		  foreach ($data as $d) {	
+			$nodes = $d->childNodes;
+			foreach ($nodes as $node) {
+			  $text =  $node->nodeValue;
+			}
+		  }
+		}
+		return $text;
+	}
+	
+	public static function addCustomer( $data ) {
+		$customerID = NULL;
+		$check = DB::table('customers')->where("slkey", $data["slkey"])->first();
+		if ( !$check ) {
+			$customerID = DB::table('customers')->insertGetId($data);
+		} else {
+			$customerID = $check->id;
+		}
+		
+		if ( $customerID ) {
+			Session::put("customerID", $customerID);
+		} else {
+			Session::forget("customerID");
+		}
+		return $customerID;
+	}
+	
+	public static function addTV( $data ) {
+		$tvID = NULL;
+		//$check = DB::table('tvs')->where("tvKey", $data["tvKey"])->first();
+		$check = DB::table('tvs')->where("ownerKey", $data["ownerKey"])->first();
+		if ( !$check ) {
+			$tvID = DB::table('tvs')->insertGetId($data);
+		} else {
+			$tvID = $check->id;
+		}
+		
+		if ( $tvID ) {
+			Session::put("tvID", $tvID);
+		} else {
+			Session::forget("tvID");
+		}
+		
+		return $tvID;
+	}
 						
 }

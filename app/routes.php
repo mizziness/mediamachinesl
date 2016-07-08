@@ -33,6 +33,9 @@ Route::get('/youtube/play/{id}', "MediaController@youtubePlay");
 
 Route::get('/help', "HomeController@help");
 
+Route::get('/settings', "HomeController@settings");
+Route::post('/settings/save/{customerID}', "HomeController@saveSettings");
+
 Route::get('/media/edit/{id}', "AdminController@editMedia");
 Route::get('/media/delete/{id}', "AdminController@deleteMedia");
 Route::post('/media/update/{id}', "AdminController@updateMedia");
