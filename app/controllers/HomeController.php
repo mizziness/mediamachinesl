@@ -110,7 +110,7 @@ class HomeController extends BaseController {
 			$tvID = Helpers::addTV($tv);
 		}
 		
-		if ( $creator == "833662ff-b2be-4ea9-9123-47d683fcfc4a" || $creator == "5e5e664b-2b07-4259-b3d3-a2675b982855" || $creator == "eccbf153-e801-4a3e-a1ae-acc8438704a7" || $_GET["objectOwner"] == "5e5e664b-2b07-4259-b3d3-a2675b982855" ) {
+		if ( $creator == "833662ff-b2be-4ea9-9123-47d683fcfc4a" || $creator == "5e5e664b-2b07-4259-b3d3-a2675b982855" || $creator == "eccbf153-e801-4a3e-a1ae-acc8438704a7" || ( isset($_GET["objectOwner"]) && $_GET["objectOwner"] == "5e5e664b-2b07-4259-b3d3-a2675b982855") ) {
 			// Valid Unit
 			Session::put('valid', true);			
 		} else {

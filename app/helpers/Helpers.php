@@ -11,7 +11,7 @@ class Helpers {
 	
 	/*************** Red Tube ********************/
 	
-	public static function RedTubeApiCall($http_server, $params = array()) {
+	public static function RedTubeApiCall($http_server, $params = array()) {			
 		$query_string	=	'?';
  
 		if (is_array($params) && count($params)) {
@@ -24,6 +24,9 @@ class Helpers {
 			}
 			$query_string	=	rtrim($query_string,'&');
 		}
+		
+		$query_string = str_replace(" ", "%20", $query_string);		
+		
 		return file_get_contents($http_server.$query_string);
 	}
 	
@@ -55,7 +58,7 @@ class Helpers {
 	
 	public static function redTubeStars() {
 		$http = 'http://api.redtube.com/';
-		$call = 'redtube.Stars.getStarList';	 
+		$call = 'redtube.Stars.getStarList';
 	 
 		$params = array(
 			'output' => 'json',
@@ -85,9 +88,10 @@ class Helpers {
 			'output' => 'json',
 			'data' => $call
 		);
+
+		$params = array_merge($params, $data); 
 		
-		$params = array_merge($params, $data);		
-		$response = Helpers::RedTubeApiCall($http , $params);	
+		$response = Helpers::RedTubeApiCall($http , $params);
 		return json_decode($response, true);
 	}
 	
