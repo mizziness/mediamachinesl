@@ -10,7 +10,7 @@
 	if ( Session::has("tempPlayer") ) {
 		$player = Session::get("tempPlayer");
 	}
-  	if ( $customerID && $customerID != NULL ) {
+  	if ( !empty($customerID) && $customerID != NULL ) {
 		$customer = DB::table("customers")->where("id", $customerID)->first();
 		$player = $customer->optionPlayer;
 	}	
